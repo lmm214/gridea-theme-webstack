@@ -431,16 +431,16 @@ body {
 .sidebar-menu .main-menu li.has-sub>a:before {
     position: relative;
     display: inline-block;
-    font-family: FontAwesome;
-    content: '\f107';
+    font-family: 'icomoon' !important;
+    content: '\f106';
     float: right;
     color: #6d747a;
     margin-left: 10px;
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    -o-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    transform: rotate(-90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
     -webkit-transition: all 150ms ease-in-out;
     -moz-transition: all 150ms ease-in-out;
     -o-transition: all 150ms ease-in-out;
@@ -449,11 +449,11 @@ body {
 
 .sidebar-menu .main-menu li.has-sub.opened>a:before,
 .sidebar-menu .main-menu li.has-sub.expanded>a:before {
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    transform: rotate(0deg)
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg)
 }
 
 .sidebar-menu .main-menu>li.opened>ul {
@@ -829,7 +829,6 @@ body.chat-open .user-info-navbar a[data-toggle=chat] {
     border: 0;
     padding: 0;
     margin: -30px;
-    margin-bottom: 30px
 }
 
 .user-info-navbar .user-info-menu {
@@ -2162,7 +2161,7 @@ input,button,select,textarea {
 }
 
 a {
-    color: #373e4a;
+    color: #428bca;
     text-decoration: none;
 }
 
@@ -2673,6 +2672,13 @@ pre code {
     }
 }
 
+@media screen and (max-width: 767px) {
+    .col-sm-3 {
+        float: left;
+        width: 50%;
+    }
+}
+
 .tooltip {
     position: absolute;
     z-index: 1070;
@@ -2801,3 +2807,25 @@ pre code {
 .clearfix:after,.dl-horizontal dd:after,.container:after,.container-fluid:after,.row:after,.form-horizontal .form-group:after,.btn-toolbar:after,.btn-group-vertical>.btn-group:after,.nav:after,.navbar:after,.navbar-header:after,.navbar-collapse:after,.pager:after,.panel-body:after,.modal-footer:after {
     clear: both;
 }
+
+
+#poem_content{
+    font-family:"FangSongGB2312","STFangsong","PingFang SC", "Lantinghei SC", "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif!important;
+    font-size:15px;
+    margin-bottom: 2em;
+    margin-top: -70px;
+    text-align: center;
+}
+#poem_content h3{
+    font-weight: 800;
+} 
+
+@media screen and (max-width:768px) {
+    #poem_content{
+        margin-top:-2em
+    }
+}
+
+
+
+

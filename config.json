@@ -1,13 +1,13 @@
 {
   "name": "webstack",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Linmumu",
   "repository": "https://github.com/lmm214/gridea-theme-webstack",
   "customConfig": [
     {
       "name": "fun1",
-      "label": "在线工具",
-      "group": "在线工具",
+      "label": "教学助手",
+      "group": "教学助手",
       "type": "array",
       "value": [],
       "arrayItems": [
@@ -20,8 +20,8 @@
     },
     {
       "name": "fun2",
-      "label": "新闻资讯",
-      "group": "新闻资讯",
+      "label": "图文影音",
+      "group": "图文影音",
       "type": "array",
       "value": [],
       "arrayItems": [
@@ -34,8 +34,8 @@
     },
     {
       "name": "fun3",
-      "label": "灵感采集",
-      "group": "灵感采集",
+      "label": "百科全书",
+      "group": "百科全书",
       "type": "array",
       "value": [],
       "arrayItems": [
@@ -48,6 +48,34 @@
     },
     {
       "name": "fun4",
+      "label": "实用软件",
+      "group": "实用软件",
+      "type": "array",
+      "value": [],
+      "arrayItems": [
+        { "label": "名称", "name": "siteName", "type": "input", "value": "" },
+        { "label": "链接", "name": "siteLink", "type": "input", "value": "" },
+        { "label": "Logo", "name": "siteLogo", "type": "input", "value": "" },
+        { "label": "描述", "name": "description", "type": "input", "value": "" }
+      ],
+      "note": ""
+    },
+    {
+      "name": "fun5",
+      "label": "线上课程",
+      "group": "线上课程",
+      "type": "array",
+      "value": [],
+      "arrayItems": [
+        { "label": "名称", "name": "siteName", "type": "input", "value": "" },
+        { "label": "链接", "name": "siteLink", "type": "input", "value": "" },
+        { "label": "Logo", "name": "siteLogo", "type": "input", "value": "" },
+        { "label": "描述", "name": "description", "type": "input", "value": "" }
+      ],
+      "note": ""
+    },
+    {
+      "name": "fun6",
       "label": "素材资源",
       "group": "素材资源",
       "type": "array",

@@ -4,13 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="viggo" />
     <title><%- themeConfig.siteName %></title>
     <meta name="description" content="<%- site.customConfig.metaDescription || themeConfig.siteDescription %>">
-    <link rel="shortcut icon" href="<%= themeConfig.domain %>/favicon.ico">
+    <link rel="shortcut icon" href="<%= themeConfig.domain %>/media/images/eduifuns.png">
     <link rel="stylesheet" href="//fonts.loli.net/css?family=Arimo:400,700,400italic">
     <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/icomoon.css">
-    <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/main.css">
+    <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/main.css?v=<%= site.utils.now %>">
   </head>
 
 <body class="page-body">
@@ -22,10 +21,10 @@
                     <!-- logo -->
                     <div class="logo">
                         <a href="<%= themeConfig.domain %>" class="logo-expanded">
-                            <img src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>" width="40" alt="" />
+                            <img src="<%= themeConfig.domain %>/images/avatar.png"  style="height:68px" alt="" />
                         </a>
                         <a href="<%= themeConfig.domain %>" class="logo-collapsed">
-                            <img src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>" width="40" alt="" />
+                            <img src="<%= themeConfig.domain %>/media/images/eduifuns.png" width="40" alt="" />
                         </a>
                     </div>
                     <div class="mobile-menu-toggle visible-xs">
@@ -35,29 +34,51 @@
                     </div>
                 </header>
                 <ul id="main-menu" class="main-menu">
-                    <li>
-                        <a href="#在线工具" class="smooth">
+                    <!-- li 加 has-sub 开启分组-->
+                    <li class="has-sub">
+                        <a>
                             <i class="icon-globe"></i>
                             <span class="title">在线工具</span>
                         </a>
+                        <!-- ul li 格式添加子分组-->
+                        <ul>
+                            <li>
+                                <a href="#教学助手" class="smooth">
+                                    <i class="icon-star"></i>
+                                    <span class="title">教学助手</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#图文影音" class="smooth">
+                                    <i class="icon-pencil"></i>
+                                    <span class="title">图文影音</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#百科全书" class="smooth">
+                                    <i class="icon-database"></i>
+                                    <span class="title">百科全书</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-                    <% if (site.customConfig.fun2) { %>
+                    <% if (site.customConfig.fun4) { %>
                     <li>
-                        <a href="#新闻资讯" class="smooth">
-                            <i class="icon-doc"></i>
-                            <span class="title">新闻资讯</span>
-                        </a>
-                    </li>
-                    <% } %>
-                    <% if (site.customConfig.fun3) { %>
-                    <li>
-                        <a href="#灵感采集" class="smooth">
-                            <i class="icon-lightbulb"></i>
-                            <span class="title">灵感采集</span>
+                        <a href="#实用软件" class="smooth">
+                            <i class="icon-desktop"></i>
+                            <span class="title">实用软件</span>
                         </a>
                     </li>
                     <% } %>
                     <% if (site.customConfig.fun4) { %>
+                    <li>
+                        <a href="#线上课程" class="smooth">
+                            <i class="icon-graduation-cap"></i>
+                            <span class="title">线上课程</span>
+                        </a>
+                    </li>
+                    <% } %>
+                    <% if (site.customConfig.fun6) { %>
                     <li>
                         <a href="#素材资源" class="smooth">
                             <i class="icon-inbox"></i>
@@ -65,6 +86,12 @@
                         </a>
                     </li>
                     <% } %>
+                    <li class="submit-tag">
+                        <a href="<%= themeConfig.domain %>/about">
+                            <i class="icon-heart"></i>
+                            <span class="title">关于本站</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -81,16 +108,68 @@
                 </ul>
             </nav>
 
+            <!-- 今日诗词 -->
+            <div id="poem_content">
+                <h3 id="poem_sentence"></h3><span id="poem_info"></span>
+            </div>
+            <!-- 今日诗词 -->
+            <br />
             <!-- 在线工具 -->
             <% if (site.customConfig.fun1) { %>
-            <h4 class="text-gray"><i class="icon-tag" style="margin-right: 7px;" id="在线工具"></i>在线工具</h4>
+            <h4 class="text-gray"><i class="icon-star" style="margin-right: 7px;" id="教学助手"></i>教学助手</h4>
             <div class="row">
                 <% site.customConfig.fun1.forEach(function(fun) { %>
                 <div class="col-sm-3">
                     <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('<%= fun.siteLink %>', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="<%= fun.siteLink %>">
                         <div class="xe-comment-entry">
                             <a class="xe-user-img">
-                                <img data-src="<%= fun.siteLogo %>" class="lozad img-circle" width="40">
+                                <img <% if (fun.siteLogo) { %>data-src="<%= fun.siteLogo %>"<% }; %> class="lozad img-circle" avatar="<%= fun.siteName %>" width="40">
+                            </a>
+                            <div class="xe-comment">
+                                <a href="#" class="xe-user-name overflowClip_1">
+                                    <strong><%= fun.siteName %></strong>
+                                </a>
+                                <p class="overflowClip_2"><%= fun.description %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+            <br />
+            <% } %>
+            <% if (site.customConfig.fun2) { %>
+            <h4 class="text-gray"><i class="icon-pencil" style="margin-right: 7px;" id="图文影音"></i>图文影音</h4>
+            <div class="row">
+                <% site.customConfig.fun2.forEach(function(fun) { %>
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('<%= fun.siteLink %>', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="<%= fun.siteLink %>">
+                        <div class="xe-comment-entry">
+                            <a class="xe-user-img">
+                                <img <% if (fun.siteLogo) { %>data-src="<%= fun.siteLogo %>"<% }; %> class="lozad img-circle" avatar="<%= fun.siteName %>" width="40">
+                            </a>
+                            <div class="xe-comment">
+                                <a href="#" class="xe-user-name overflowClip_1">
+                                    <strong><%= fun.siteName %></strong>
+                                </a>
+                                <p class="overflowClip_2"><%= fun.description %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+            <br />
+            <% } %>
+            <% if (site.customConfig.fun3) { %>
+            <h4 class="text-gray"><i class="icon-database" style="margin-right: 7px;" id="百科全书"></i>百科全书</h4>
+            <div class="row">
+                <% site.customConfig.fun3.forEach(function(fun) { %>
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('<%= fun.siteLink %>', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="<%= fun.siteLink %>">
+                        <div class="xe-comment-entry">
+                            <a class="xe-user-img">
+                                <img <% if (fun.siteLogo) { %>data-src="<%= fun.siteLogo %>"<% }; %> class="lozad img-circle" avatar="<%= fun.siteName %>" width="40">
                             </a>
                             <div class="xe-comment">
                                 <a href="#" class="xe-user-name overflowClip_1">
@@ -107,68 +186,68 @@
             <% } %>
             <!-- END 在线工具 -->
 
-            <!-- 新闻资讯 -->
-            <% if (site.customConfig.fun2) { %>
-            <h4 class="text-gray"><i class="icon-tag" style="margin-right: 7px;" id="新闻资讯"></i>新闻资讯</h4>
-            <div class="row">
-                <% site.customConfig.fun2.forEach(function(fun) { %>
-                <div class="col-sm-3">
-                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('<%= fun.siteLink %>', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="<%= fun.siteLink %>">
-                        <div class="xe-comment-entry">
-                            <a class="xe-user-img">
-                                <img data-src="<%= fun.siteLogo %>" class="lozad img-circle" width="40">
-                            </a>
-                            <div class="xe-comment">
-                                <a href="#" class="xe-user-name overflowClip_1">
-                                    <strong><%= fun.siteName %></strong>
-                                </a>
-                                <p class="overflowClip_2"><%= fun.description %></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <% }); %>
-            </div>
-            <br />
-            <% } %>
-            <!-- END 新闻资讯 -->
-
-            <!-- 灵感采集 -->
-            <% if (site.customConfig.fun3) { %>
-            <h4 class="text-gray"><i class="icon-tag" style="margin-right: 7px;" id="灵感采集"></i>灵感采集</h4>
-            <div class="row">
-                <% site.customConfig.fun3.forEach(function(fun) { %>
-                <div class="col-sm-3">
-                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('<%= fun.siteLink %>', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="<%= fun.siteLink %>">
-                        <div class="xe-comment-entry">
-                            <a class="xe-user-img">
-                                <img data-src="<%= fun.siteLogo %>" class="lozad img-circle" width="40">
-                            </a>
-                            <div class="xe-comment">
-                                <a href="#" class="xe-user-name overflowClip_1">
-                                    <strong><%= fun.siteName %></strong>
-                                </a>
-                                <p class="overflowClip_2"><%= fun.description %></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <% }); %>
-            </div>
-            <br />
-            <% } %>
-            <!-- END 灵感采集 -->
-
-            <!-- 素材资源 -->
+            <!-- 实用软件 -->
             <% if (site.customConfig.fun4) { %>
-            <h4 class="text-gray"><i class="icon-tag" style="margin-right: 7px;" id="素材资源"></i>素材资源</h4>
+            <h4 class="text-gray"><i class="icon-desktop" style="margin-right: 7px;" id="实用软件"></i>实用软件</h4>
             <div class="row">
                 <% site.customConfig.fun4.forEach(function(fun) { %>
                 <div class="col-sm-3">
                     <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('<%= fun.siteLink %>', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="<%= fun.siteLink %>">
                         <div class="xe-comment-entry">
                             <a class="xe-user-img">
-                                <img data-src="<%= fun.siteLogo %>" class="lozad img-circle" width="40">
+                                <img <% if (fun.siteLogo) { %>data-src="<%= fun.siteLogo %>"<% }; %> class="lozad img-circle" avatar="<%= fun.siteName %>" width="40">
+                            </a>
+                            <div class="xe-comment">
+                                <a href="#" class="xe-user-name overflowClip_1">
+                                    <strong><%= fun.siteName %></strong>
+                                </a>
+                                <p class="overflowClip_2"><%= fun.description %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+            <br />
+            <% } %>
+            <!-- END 实用软件 -->
+
+            <!-- 线上课程 -->
+            <% if (site.customConfig.fun5) { %>
+            <h4 class="text-gray"><i class="icon-graduation-cap" style="margin-right: 7px;" id="线上课程"></i>线上课程</h4>
+            <div class="row">
+                <% site.customConfig.fun5.forEach(function(fun) { %>
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('<%= fun.siteLink %>', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="<%= fun.siteLink %>">
+                        <div class="xe-comment-entry">
+                            <a class="xe-user-img">
+                                <img <% if (fun.siteLogo) { %>data-src="<%= fun.siteLogo %>"<% }; %> class="lozad img-circle" avatar="<%= fun.siteName %>" width="40">
+                            </a>
+                            <div class="xe-comment">
+                                <a href="#" class="xe-user-name overflowClip_1">
+                                    <strong><%= fun.siteName %></strong>
+                                </a>
+                                <p class="overflowClip_2"><%= fun.description %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+            <br />
+            <% } %>
+            <!-- END 线上课程 -->
+
+            <!-- 素材资源 -->
+            <% if (site.customConfig.fun6) { %>
+            <h4 class="text-gray"><i class="icon-inbox" style="margin-right: 7px;" id="素材资源"></i>素材资源</h4>
+            <div class="row">
+                <% site.customConfig.fun6.forEach(function(fun) { %>
+                <div class="col-sm-3">
+                    <div class="xe-widget xe-conversations box2 label-info" onclick="window.open('<%= fun.siteLink %>', '_blank')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="<%= fun.siteLink %>">
+                        <div class="xe-comment-entry">
+                            <a class="xe-user-img">
+                                <img <% if (fun.siteLogo) { %>data-src="<%= fun.siteLogo %>"<% }; %> class="lozad img-circle" avatar="<%= fun.siteName %>" width="40">
                             </a>
                             <div class="xe-comment">
                                 <a href="#" class="xe-user-name overflowClip_1">
@@ -194,7 +273,7 @@
                 <div class="footer-inner">
                     <!-- Add your copyright text here -->
                     <div class="footer-text">
-                        <%- themeConfig.footerInfo %>
+                        <%- themeConfig.footerInfo %> <span id="busuanzi_container_site_pv" style='display:none'>总访问量<span id="busuanzi_value_site_pv"></span>次</span>
                     </div>
                     <div class="go-up">
                         <a href="#" rel="go-top">
@@ -205,6 +284,18 @@
             </footer>
         </div>
     </div>
+
+
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <script type="text/javascript">
+    jinrishici.load(function(result) {
+        var sentence = document.querySelector("#poem_sentence")
+        var info = document.querySelector("#poem_info")
+        sentence.innerHTML = result.data.content
+        info.innerHTML = '【' + result.data.origin.dynasty + '】' + result.data.origin.author + '《' + result.data.origin.title + '》'
+    });
+    </script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
     <script src="//cdnjs.loli.net/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- 锚点平滑移动 -->
@@ -272,9 +363,12 @@
     </script>
     <!-- Bottom Scripts -->
     <script src="<%= themeConfig.domain %>/media/js/bootstrap.min.js"></script>
+    <script src="<%= themeConfig.domain %>/media/js/TweenMax.min.js"></script>
+    <script src="<%= themeConfig.domain %>/media/js/resizeable.js"></script>
     <script src="<%= themeConfig.domain %>/media/js/xenon-toggles.js"></script>
     <script src="<%= themeConfig.domain %>/media/js/xenon-custom.js"></script>
     <script src="<%= themeConfig.domain %>/media/js/lozad.js"></script>
+    <script src="<%= themeConfig.domain %>/media/js/LetterAvatar.js"></script>
 </body>
 
 
